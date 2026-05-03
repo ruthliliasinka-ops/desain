@@ -1,0 +1,813 @@
+<!DOCTYPE html> <!-- Menandakan dokumen HTML5 -->
+<html lang="en"> <!-- Bahasa halaman -->
+
+<head>
+
+  <meta charset="UTF-8"> <!-- Supaya karakter kebaca normal -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
+
+  <title>Our Products</title> <!-- Judul browser -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="shop.css">
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- class products-page PENTING -->
+<body class="products-page">
+
+<header class="header">
+  <h2 class="logo">Éloura</h2>
+
+  <nav class="navbar">
+    <a href="home.html">Home</a>
+  <a href="produk.html">Products</a>
+  <a href="aboutus.html">About</a>
+  <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="header-right">
+    <input type="text" placeholder="Search..." class="search" id="searchInput">
+
+    <span>🔍</span>
+
+    <a href="cart.html" class="cart-icon">
+      🛒
+      <span id="cart-count">0</span>
+    </a>
+  </div>
+</header>
+
+
+
+<!-- =========================================
+     SHOP SECTION
+========================================= -->
+
+<section class="products-hero">
+  
+
+
+
+    <!-- =============================
+         TITLE
+    ============================== -->
+
+     <div class="products-banner">
+    <h1>Our Products</h1>
+    <p>Find skincare for every skin need</p>
+  </div>
+
+
+
+    <!-- =============================
+         DESKRIPSI
+    ============================== -->
+
+    
+
+
+
+    <!-- =============================
+         CATEGORY BUTTON
+    ============================== -->
+
+    <div class="category">
+
+      <button class="cat active">
+        All
+      </button>
+
+      <button class="cat">
+        Cleanser
+      </button>
+
+      <button class="cat">
+        Toner
+      </button>
+
+      <button class="cat">
+        Serum
+      </button>
+
+      <button class="cat">
+        Moisturizer
+      </button>
+
+      <button class="cat">
+        Sunscreen
+      </button>
+
+    </div>
+
+
+
+    <!-- =============================
+         PRODUCT WRAPPER
+    ============================== -->
+
+    <div class="product-list">
+
+
+
+
+      <!-- =================================
+           PRODUCT 1
+      ================================== -->
+
+      <div class="product-card"
+data-category="cleanser"
+data-name="Cleanser"
+data-price="480000"
+data-desc="Deep cleansing formula that removes dirt, oil, and makeup while keeping skin fresh, soft, and hydrated."
+data-img='["00000.png","000000.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="00000.png" alt="Cleanser">
+
+    <div class="card-actions">
+
+      <button class="action-btn" onclick="goToDetail(this)">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+      </button>
+
+      <button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+  </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Facial Cleanser
+          </h3>
+
+          <p class="product-desc">
+            "Deep cleansing formula that removes dirt, oil, and makeup while keeping skin fresh, and soft."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 480.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+      <!-- =================================
+           PRODUCT 2
+      ================================== -->
+
+      <div class="product-card"
+data-category="serum"
+data-name="serum"
+data-price="380000"
+data-desc="Lightweight brightening serum that helps improve skin texture and reveal a healthy natural glow."
+data-img='["s222.png","s2222.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="s222.png" alt="Cleanser">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Hydrating Serum
+          </h3>
+
+          <p class="product-desc">
+            "Lightweight brightening serum that helps improve skin texture and reveal a healthy skin."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 380.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+      <!-- =================================
+           PRODUCT 3
+      ================================== -->
+
+      <div class="product-card"
+data-category="toner"
+data-name="Toner"
+data-price="510000"
+data-desc="Gentle toner that refreshes the skin, balances moisture, and prepares your face for skincare."
+data-img='["too.png","ttpink.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="too.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Gentle Toner
+          </h3>
+
+          <p class="product-desc">
+            "Gentle toner that refreshes the skin, balances moisture, and prepares your face for skincare."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 390.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 4
+      ================================== -->
+
+      <div class="product-card"
+data-category="moisturizer"
+data-name="Moisturizer"
+data-price="360000"
+data-desc="Hydrating moisturizer that locks in moisture and keeps skin smooth, soft, and healthy all day."
+data-img='["mmm.png","mmmm.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="mmm.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Gentle Toner
+          </h3>
+
+          <p class="product-desc">
+           "Hydrating moisturizer that locks in moisture and keeps skin smooth, soft, and healthy all day."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 360.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 5
+      ================================== -->
+
+      <div class="product-card"
+data-category="sunscreen"
+data-name="sunscreen"
+data-price="490000"
+data-desc="Daily sunscreen with lightweight protection to shield skin from UV rays without feeling greasy."
+data-img='["sssss.png","ssssss.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="sssss.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Sunscreen
+          </h3>
+
+          <p class="product-desc">
+            "Daily sunscreen with lightweight protection to shield skin from UV rays without feeling greasy."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 490.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 6
+      ================================== -->
+
+      <div class="product-card"
+data-category="cleanser"
+data-name="cleanser"
+data-price="610000"
+data-desc="Premium facial cleanser with soft foam texture that deeply cleans pores and excess oil gently."
+data-img='["liii.png","liiii.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="liii.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Cleanser
+          </h3>
+
+          <p class="product-desc">
+            "Premium facial cleanser with soft foam texture that deeply cleans pores and excess oil gently."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 610.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 7
+      ================================== -->
+
+      <div class="product-card"
+data-category="serum"
+data-name="Serum"
+data-price="300000"
+data-desc="Glow boosting serum enriched with hydrating ingredients for brighter and radiant looking skin."
+data-img='["88888.png","888888.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="88888.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Serum
+          </h3>
+
+          <p class="product-desc">
+            "Glow boosting serum enriched with hydrating ingredients for brighter and radiant looking skin."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 390.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 8
+      ================================== -->
+
+      <div class="product-card"
+data-category="toner"
+data-name="Toner"
+data-price="600000"
+data-desc="Refreshing toner that helps calm irritated skin and maintain a balanced healthy complexion."
+data-img='["tnr.png","tnrr.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="tnr.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Gentle Toner
+          </h3>
+
+          <p class="product-desc">
+            "Refreshing toner that helps calm irritated skin and maintain a balanced healthy complexion."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 600.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- =================================
+           PRODUCT 9
+      ================================== -->
+
+      <div class="product-card"
+data-category="moisturizer"
+data-name="moisturizer"
+data-price="320000"
+data-desc="Rich moisturizer formula designed to nourish dry skin and strengthen the natural skin barrier."
+data-img='["briiiii.png","briiiiii.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="briiiii.png" alt="Toner">
+
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            Moisturizer
+          </h3>
+
+          <p class="product-desc">
+           "Rich moisturizer formula designed to nourish dry skin and strengthen the natural skin barrier."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 320.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+
+
+
+
+      <!-- =================================
+           PRODUCT 10
+      ================================== -->
+
+      <div class="product-card"
+data-category="sunscreen"
+data-name="sunscreen"
+data-price="425000"
+data-desc="Rich moisturizer formula designed to nourish dry skin and strengthen the natural skin barrier."
+data-img='["11111.png","111111.png"]'>
+
+  <!-- IMAGE -->
+  <div class="product-img">
+
+    <img src="11111.png" alt="Cleanser">
+          <!-- ACTION -->
+    <div class="card-actions">
+
+      <!-- BUY -->
+      <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+
+
+    </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="card-content">
+
+          <h3 class="card-title">
+            sunscreen
+          </h3>
+
+          <p class="product-desc">
+          "Rich moisturizer formula designed to nourish dry skin and strengthen the natural skin barrier."
+          </p>
+
+          <div class="price">
+            <span class="span">
+              Rp 425.000
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+    </div> <!-- END PRODUCT WRAPPER -->
+
+  </div> <!-- END CONTAINER -->
+
+</section>
+
+<footer class="footer">
+  <p>© 2025 Éloura STORE. All rights reserved.</p>
+</footer>
+
+
+
+
+
+<!-- =========================================
+     FILTER CATEGORY SCRIPT
+========================================= -->
+
+<!-- =========================================
+     FILTER CATEGORY SCRIPT
+========================================= -->
+
+<script>
+
+/* ambil semua tombol kategori */
+const buttons =
+document.querySelectorAll(".cat");
+
+/* ambil semua card produk */
+const cards =
+document.querySelectorAll(".product-card");
+
+/* looping semua tombol */
+buttons.forEach(button => {
+
+  /* saat tombol diklik */
+  button.addEventListener("click", () => {
+
+    /* hapus active dari semua tombol */
+    buttons.forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    /* tambahkan active ke tombol yg dipilih */
+    button.classList.add("active");
+
+    /* ambil nama kategori */
+    const category =
+    button.innerText.toLowerCase();
+
+    /* looping semua card */
+    cards.forEach(card => {
+
+      /* ambil kategori dari product */
+      const cardCategory =
+      card.dataset.category.toLowerCase();
+
+      /* kalau all tampil semua */
+      if(category === "all"){
+
+        card.style.display = "block";
+
+      }
+
+      /* kalau kategori cocok tampil */
+      else if(cardCategory === category){
+
+        card.style.display = "block";
+
+      }
+
+      /* selain itu sembunyikan */
+      else{
+
+        card.style.display = "none";
+
+      }
+
+    });
+
+  });
+
+});
+
+</script>
+
+<script>
+function getProductData(card){
+
+  return {
+    name: card.querySelector(".card-title").innerText,
+    price: card.querySelector(".price .span").innerText.replace(/\D/g,''),
+    img: [card.querySelector("img").src]
+  };
+
+}
+
+/* =======================
+   BUY (KE DETAIL)
+======================= */
+function goDetail(btn){
+
+  const card = btn.closest(".product-card");
+
+  const product = getProductData(card);
+
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+
+  window.location.href = "product.html";
+}
+
+
+/* =======================
+   ADD TO CART
+======================= */
+function addCart(btn){
+
+  const card = btn.closest(".product-card");
+
+  const product = getProductData(card);
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    ...product,
+    qty:1
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Produk ditambahkan ke keranjang!");
+}
+</script>
+
+<script src="script2.js"></script>
+
+
+
+
+
+<!-- IONICONS -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

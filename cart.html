@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Cart</title>
+
+<style>
+/* ================= CART PAGE ================= */
+
+/* ===== BODY (halaman utama) ===== */
+body{
+  font-family: Arial; /* font yang dipakai di seluruh halaman */
+  margin: 0; /* hilangkan jarak luar default browser */
+  background: #f5f5f5; /* warna background abu muda */
+}
+
+/* ===== CONTAINER (pembungkus semua isi) ===== */
+.container{
+  width: 90%; /* lebar 90% dari layar (biar ada jarak kanan kiri) */
+  margin: 40px auto; /* jarak atas bawah 40px, auto = tengah */
+}
+
+/* ===== JUDUL ===== */
+h1{
+  margin-bottom: 20px; /* jarak bawah dari judul ke konten */
+}
+
+/* ================= TABLE CART ================= */
+
+/* tabel utama cart */
+.cart-table{
+  width: 100%; /* lebar full mengikuti container */
+  background: white; /* background putih */
+  border-radius: 12px; /* sudut melengkung */
+  padding: 20px; /* jarak dalam */
+}
+
+/* header tabel & item */
+.cart-header,
+.cart-item{
+  display: grid; /* pakai grid supaya rapi per kolom */
+  grid-template-columns: 2fr 1fr 1fr 1fr 50px; 
+  /* pembagian kolom:
+     2fr = produk lebih lebar
+     1fr = kolom lain sama rata
+     50px = kolom tombol hapus kecil */
+  align-items: center; /* isi rata tengah vertikal */
+  padding: 10px 0; /* jarak atas bawah */
+}
+
+/* header (judul kolom) */
+.cart-header{
+  font-weight: bold; /* teks tebal */
+  border-bottom: 1px solid #ddd; /* garis bawah */
+}
+
+/* item produk */
+.cart-item{
+  border-bottom: 1px solid #eee; /* garis pemisah antar produk */
+}
+
+/* gambar produk */
+.cart-item img{
+  width: 70px; /* ukuran lebar gambar */
+  border-radius: 10px; /* sudut gambar melengkung */
+}
+
+/* bagian produk (gambar + nama) */
+.product{
+  display: flex; /* supaya gambar & teks sejajar */
+  align-items: center; /* rata tengah vertikal */
+  gap: 10px; /* jarak antar elemen */
+}
+
+/* bagian quantity (+ -) */
+.qty{
+  display: flex; /* tombol dan angka sejajar */
+  align-items: center; /* rata tengah */
+  gap: 10px; /* jarak antar tombol */
+}
+
+/* tombol + - */
+.qty button{
+  padding: 5px 10px; /* jarak dalam tombol */
+  border: none; /* hilangkan garis tombol */
+  cursor: pointer; /* cursor jadi tangan saat hover */
+}
+
+/* tombol hapus */
+.remove{
+  cursor: pointer; /* cursor tangan */
+  color: red; /* warna merah (tanda hapus) */
+}
+
+/* ================= SUMMARY (total harga) ================= */
+
+.summary{
+  margin-top: 20px; /* jarak dari tabel */
+  background: white; /* background putih */
+  padding: 20px; /* jarak dalam */
+  border-radius: 12px; /* sudut melengkung */
+}
+
+/* tombol checkout */
+.checkout-btn{
+  width: 100%; /* lebar penuh */
+  padding: 15px; /* tinggi tombol */
+  background: red; /* warna tombol */
+  color: white; /* warna teks */
+  border: none; /* hilangkan border */
+  border-radius: 10px; /* sudut tombol */
+  font-size: 16px; /* ukuran teks */
+  cursor: pointer; /* cursor tangan */
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>My Cart</h1>
+
+<div class="cart-table">
+
+<div class="cart-header">
+<div>Product</div>
+<div>Price</div>
+<div>Qty</div>
+<div>Total</div>
+<div></div>
+</div>
+
+<div id="cart-list"></div>
+
+</div>
+
+<div class="summary">
+<p>Subtotal: Rp <span id="subtotal">0</span></p>
+<h3>Total: Rp <span id="total">0</span></h3>
+
+<button class="checkout-btn" onclick="goCheckout()">
+Proceed to Checkout
+</button>
+</div>
+
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+
+const list = document.getElementById("cart-list");
+const subtotalEl = document.getElementById("subtotal");
+const totalEl = document.getElementById("total");
+
+list.innerHTML="";
+let subtotal=0;
+
+cart.forEach((item,index)=>{
+
+if(!item.qty) item.qty=1;
+
+/* FIX gambar kategori */
+let productImg =
+Array.isArray(item.img)
+? item.img[0]
+: item.img;
+
+subtotal += item.price * item.qty;
+
+list.innerHTML += `
+<div class="cart-item">
+
+<div class="product">
+<img src="${productImg}">
+<span>${item.name}</span>
+</div>
+
+<div>Rp ${item.price}</div>
+
+<div class="qty">
+<button onclick="changeQty(${index},-1)">-</button>
+<span>${item.qty}</span>
+<button onclick="changeQty(${index},1)">+</button>
+</div>
+
+<div>
+Rp ${item.price * item.qty}
+</div>
+
+<div class="remove"
+onclick="removeItem(${index})">
+X
+</div>
+
+</div>
+`;
+
+});
+
+subtotalEl.innerText=subtotal.toLocaleString();
+totalEl.innerText=subtotal.toLocaleString();
+
+
+localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+function changeQty(index,change){
+
+cart[index].qty += change;
+
+if(cart[index].qty<=0){
+cart.splice(index,1);
+}
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+renderCart();
+}
+
+function removeItem(index){
+cart.splice(index,1);
+
+localStorage.setItem("cart",
+JSON.stringify(cart));
+
+renderCart();
+}
+
+function goCheckout(){
+window.location.href="checkout.html";
+}
+
+renderCart();
+</script>
+
+
+</body>
+</html>

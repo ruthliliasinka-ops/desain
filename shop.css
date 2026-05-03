@@ -1,0 +1,843 @@
+/* ============================= */
+/*        SHOP SECTION           */
+/* ============================= */
+
+/* SECTION UTAMA PRODUK */
+.shop{
+  padding: 70px 0; /* jarak atas bawah section */
+}
+
+
+
+/* Bungkus utama section shop */
+.shop .title-wrapper {
+  position: relative; /* biar tombol kanan bisa absolute */
+  text-align: center; /* judul di tengah */
+  margin-bottom: 40px; /* jarak ke produk */
+  padding-top: 20px;  /* kasih ruang atas */
+}
+
+/* Judul shop */
+.shop .section-title {
+  text-align: center; /* biar judul tengah */
+  margin: 0 auto; /* center horizontal */
+  font-size: 28px; /* ukuran teks */
+  font-weight: 700; /* tebal */
+  letter-spacing: 5px; /* jarak huruf */
+}
+
+/* Tombol "lihat semua" di kanan */
+.shop .btn-link {
+  position: absolute; /* biar nempel kanan */
+  right: 0; /* geser ke kanan */
+  top: 50%; /* tengah vertikal */
+  transform: translateY(-50%); /* benerin posisi tengah */
+}
+
+
+
+/* ============================= */
+/*        PRODUCT CARD           */
+/* ============================= */
+
+/* Card utama produk */
+.shop-card{
+  width: 280px; /* ukuran card biar konsisten */
+  background: white; /* background card */
+  border-radius: 24px; /* sudut rounded */
+  padding: 15px; /* Jarak dalam */
+  text-align: center; /* Tengahin isi */
+   box-shadow: 0 6px 20px rgba(0,0,0,0.06); /* bayangan halus */
+
+  overflow: hidden; /* biar isi ga keluar */
+
+  transition: 0.35s ease; /* animasi hover */
+}
+
+.shop-card:hover{
+  transform: translateY(-8px); /* naik dikit pas hover */
+}
+
+/* ============================= */
+/*        BUNGKUS GAMBAR         */
+/* ============================= */
+
+.shop-card .card-banner{
+  position:relative; /* supaya child absolute ikut sini */
+}
+
+
+/* ============================= */
+/*        IMAGE / BANNER         */
+/* ============================= */
+
+/* Container gambar */
+.card-banner {
+  width: 100%; /* full lebar */
+  height: 300px; /* tinggi gambar */
+  border-radius: 20px; /* sudut melengkung */
+  overflow: hidden; /* gambar ikut rounded */
+  display: flex; /* biar bisa center */
+  align-items: center; /* tengah vertikal */
+  justify-content: center; /* tengah horizontal */
+   position: relative; /* supaya icon bisa nempel di dalam */
+    background: #f9f9f9; /* biar ga kosong */
+}
+
+/* ================= IMAGE ================= */
+
+
+/* Gambar di dalam banner */
+.card-banner img {
+  width: 100%; /* penuh */
+  height: 100%; /* penuh */
+  object-fit: cover; /* biar nggak gepeng */
+}
+
+
+/* ============================= */
+/*        CONTENT TEXT           */
+/* ============================= */
+
+/* isi text dalam card */
+.card-content {
+  display: flex; /* flex layout */
+  flex-direction: column; /* susun ke bawah */
+  flex-grow: 1; /* isi penuh tinggi */
+  padding: 22px;
+  text-align: center; /* bikin tengah */
+}
+
+/* Judul produk */
+.card-title {
+  font-size: 16px; /* ukuran teks */
+  line-height: 1.4; /* jarak antar baris */
+  min-height: 44px; /* biar rata walau teks beda panjang */
+}
+
+/* Deskripsi produk */
+.card-text {
+  font-size: 14px; /* kecilin dikit */
+  color: #666; /* warna abu */
+  min-height: 44px; /* biar rata */
+}
+
+
+
+
+
+
+
+/* =========================================
+   HARGA PRODUK
+========================================= */
+
+.price{
+  font-size: 16px; /* ukuran harga */
+  color: #777; /* warna abu */
+}
+
+
+.hero .price {
+  color: var(--black);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  margin-block-end: 20px;
+}
+
+.shop-card .price {
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:24px;
+  color:#000;
+}
+
+
+.shop-card :is(.price, .card-rating, .rating-wrapper) {
+  display: flex; /* sejajar */
+  justify-content: center; /* tengah */
+  align-items: center; /* rata tengah */
+  gap: 5px; /* jarak antar item */
+}
+
+/* harga utama */
+.shop-card .price .span {
+  color: black; /* warna hitam */
+  font-weight: bold; /* tebal */
+}
+
+/* ============================= */
+/*   SCROLL ORDER SUMMARY        */
+/* ============================= */
+
+/* target container list produk (yang id="items") */
+#items{
+
+  max-height: 300px; 
+  /* batas tinggi maksimal container (biar ga kepanjangan ke bawah) */
+
+  overflow-y: auto; 
+  /* aktifkan scroll vertikal kalau isi melebihi tinggi */
+
+  padding-right: 5px; 
+  /* kasih jarak kanan supaya konten ga ketiban scrollbar */
+
+  display: flex; 
+  /* pakai flexbox biar item tersusun rapi */
+
+  flex-direction: column; 
+  /* susun item ke bawah (vertical) */
+
+  gap: 10px; 
+  /* jarak antar produk biar ga nempel */
+}
+
+
+/* ============================= */
+/*   SCROLLBAR CUSTOM (CHROME)   */
+/* ============================= */
+
+/* bagian seluruh scrollbar */
+#items::-webkit-scrollbar{
+
+  width: 6px; 
+  /* lebar scrollbar (semakin kecil semakin minimalis) */
+
+}
+
+
+/* bagian batang scroll (yang bisa digeser) */
+#items::-webkit-scrollbar-thumb{
+
+  background: #ddd; 
+  /* warna scrollbar (abu muda) */
+
+  border-radius: 10px; 
+  /* bikin ujungnya melengkung */
+
+}
+
+
+/* saat scrollbar di hover */
+#items::-webkit-scrollbar-thumb:hover{
+
+  background: #bbb; 
+  /* warna jadi lebih gelap saat disentuh */
+
+}
+
+
+/* ============================= */
+/*   OPTIONAL: BIAR LEBIH HALUS  */
+/* ============================= */
+
+/* animasi scroll biar smooth */
+#items{
+  scroll-behavior: smooth; 
+  /* bikin scroll jadi halus (smooth) */
+}
+
+
+
+
+
+/* ============================= */
+/*        ACTION BUTTON          */
+/* ============================= */
+
+
+
+/* saat card di hover */
+.card:hover .card-actions{
+  opacity: 1; /* muncul */
+}
+
+
+
+
+
+/* hover icon */
+.action-btn:hover{
+  background: black; /* jadi hitam */
+  color: white; /* icon putih */
+}
+
+
+/* tombol icon (cart, wishlist) */
+.shop-card .card-actions{
+  position:absolute; /* bebas posisi dalam card-banner */
+  top:50%; /* posisi di tengah secara vertikal */
+  right:15px; /* nempel ke kanan */
+  transform: translateY(-50%); /* benerin center */
+  display:grid; /* susun icon ke bawah */
+  gap:10px; /* jarak antar icon */
+  opacity:0; /* awalnya disembunyiin */
+  transition:0.4s; /* animasi smooth */
+}
+
+/* ============================= */
+/*        SAAT DI HOVER          */
+/* ============================= */
+
+.shop-card:hover .card-actions{
+  opacity:1; /* munculin icon */
+  transform:translate(0, -50%); /* geser masuk ke dalam */
+}
+
+/* tombol bulat */
+.shop-card .action-btn {
+  background: white; /* warna bg */
+  font-size: 24px; /* icon gede */
+  padding: 12px; /* ruang dalam */
+  border-radius: 50%; /* BULAT */
+  transition: 0.3s; /* animasi */
+}
+
+/* hover tombol */
+.shop-card .action-btn:hover {
+  background: black; /* jadi hitam */
+  color: white; /* icon putih */
+}
+
+/* ============================= */
+/*        SCROLL PRODUK          */
+/* ============================= */
+
+.scroll {
+  display: flex;
+  justify-content: center; /* ⬅️ ini bikin tengah */
+  gap: 25px;
+  flex-wrap: wrap; /* ⬅️ biar turun ke bawah */
+  padding: 20px;
+}
+
+/* ============================= */
+/*        FILTER BUTTON          */
+/* ============================= */
+
+.filter-buttons {
+  display: flex; /* sejajar horizontal */
+  justify-content: center; /* posisi tengah */
+  gap: 10px; /* jarak antar tombol */
+  margin-bottom: 40px; /* jarak ke produk */
+}
+
+.filter-buttons button {
+  padding: 8px 16px; /* ukuran tombol */
+  border-radius: 20px; /* bikin oval */
+  border: 1px solid #ccc; /* garis tipis */
+  background: white; /* warna awal */
+  cursor: pointer; /* cursor tangan */
+  transition: 0.3s; /* animasi halus */
+}
+
+.filter-buttons button:hover {
+  background: black; /* hover jadi hitam */
+  color: white; /* teks jadi putih */
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+  .product-title{
+    font-size: 34px; /* kecilin judul */
+    letter-spacing: 4px; /* kecilin jarak huruf */
+  }
+
+  .product-list{
+    padding-inline: 20px; /* kecilin padding kiri kanan */
+    gap: 25px; /* kecilin jarak card */
+  }
+
+  .card .img-box{
+    height: 220px; /* kecilin gambar */
+  }
+
+  .card h3{
+    font-size: 20px; /* kecilin judul produk */
+  }
+
+}
+
+/* =========================================
+   KHUSUS HALAMAN PRODUCT
+   BIAR HOME.HTML GA KENA
+========================================= */
+
+.products-page{
+  font-family: 'Urbanist', sans-serif; /* font utama */
+  background: white; /* background halaman */
+}
+
+
+
+/* =========================================
+   SECTION PRODUCT
+========================================= */
+
+.products-page .products-section{
+
+  padding: 80px 7%; /* jarak atas bawah */
+
+}
+
+
+
+/* =========================================
+   HEADER PRODUCT
+========================================= */
+
+.products-page .product-header{
+
+  background: #cfc6b8; /* warna beige kayak contoh */
+    height: 120px; /* tinggi banner (lebih tinggi dari biasa) */
+    display: flex; /* biar bisa center */
+    align-items: center; /* tengah vertikal */
+    justify-content: center; /* tengah horizontal */
+    margin: 20px 50px; /* jarak kiri kanan */
+    border-radius: 5px; /* sedikit rounded */
+
+}
+
+
+
+/* judul utama */
+.products-page .product-title{
+
+  font-size: 30px; /* agak gede biar stand out */
+    font-weight: 700; /* lebih tebal */
+    letter-spacing: 6px; /* rapihin huruf */
+    color:black; /* hitam tapi lebih soft dikit */
+}
+
+
+
+/* deskripsi */
+.products-page .product-desc{
+
+  text-align: center; /* tengah */
+
+  font-size: 16px; /* ukuran teks */
+
+  color: #777; /* warna abu */
+
+  margin-bottom: 55px; /* jarak bawah */
+
+}
+
+
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.products-page .category{
+
+  display: flex; /* sejajar */
+
+  justify-content: center; /* tengah */
+
+  flex-wrap: wrap; /* responsive */
+
+  gap: 14px; /* jarak tombol */
+
+  margin-bottom: 60px; /* jarak ke produk */
+
+}
+
+
+
+/* tombol category */
+.products-page .cat{
+
+  padding: 12px 26px; /* ukuran tombol */
+
+  border-radius: 999px; /* oval */
+
+  border: 1px solid #ddd; /* border */
+
+  background: white; /* bg putih */
+
+  font-size: 15px; /* ukuran teks */
+
+  cursor: pointer; /* cursor tangan */
+
+  transition: 0.3s ease; /* animasi */
+
+}
+
+
+
+/* hover tombol */
+.products-page .cat:hover{
+
+  background: black; /* bg hitam */
+
+  color: white; /* teks putih */
+
+}
+
+
+
+/* tombol aktif */
+.products-page .cat.active{
+
+  background: black; /* bg hitam */
+
+  color: white; /* teks putih */
+
+}
+
+
+
+/* =========================================
+   PRODUCT LIST
+========================================= */
+
+.products-page .product-list{
+
+  display: flex; /* horizontal */
+
+  justify-content: center; /* tengah */
+
+  flex-wrap: wrap; /* turun otomatis */
+
+  gap: 35px; /* jarak antar card */
+
+}
+
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.products-page .product-card{
+
+  width: 270px; /* lebar card */
+
+  transition: 0.35s ease; /* animasi */
+
+}
+
+
+
+/* hover card */
+.products-page .product-card:hover{
+
+  transform: translateY(-8px); /* naik */
+
+}
+
+
+
+/* =========================================
+   GAMBAR PRODUK
+========================================= */
+
+.products-page .product-img{
+
+  width: 100%; /* full */
+
+  height: 330px; /* tinggi */
+
+  border-radius: 30px; /* rounded */
+
+  overflow: hidden; /* gambar ikut rounded */
+
+  background: #f5f5f5; /* bg abu */
+
+  margin-bottom: 20px; /* jarak bawah */
+
+}
+
+
+
+/* gambar */
+.products-page .product-img img{
+
+  width: 100%; /* full */
+
+  height: 100%; /* full */
+
+  object-fit: cover; /* ga gepeng */
+
+  transition: 0.4s ease; /* animasi */
+
+}
+
+
+
+/* hover gambar */
+.products-page .product-card:hover img{
+
+  transform: scale(1.05); /* zoom */
+
+}
+
+
+
+/* =========================================
+   CONTENT CARD
+========================================= */
+
+.products-page .card-content{
+
+  text-align: center; /* teks tengah */
+
+}
+
+
+
+/* judul produk */
+.products-page .card-title{
+
+  font-size: 22px; /* ukuran */
+
+  font-weight: 600; /* tebal */
+
+  margin-bottom: 10px; /* jarak bawah */
+
+}
+
+
+
+/* deskripsi produk */
+.products-page .card-content .product-desc{
+
+  font-size: 15px; /* ukuran */
+
+  color: #777; /* abu */
+
+  line-height: 1.6; /* jarak baris */
+
+  margin-bottom: 16px; /* jarak bawah */
+
+}
+
+
+
+/* harga */
+.products-page .price{
+
+  font-size: 20px; /* ukuran */
+
+  font-weight: 700; /* tebal */
+
+}
+
+
+
+/* tulisan harga */
+.products-page .price .span{
+
+  color: black; /* warna hitam */
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+  /* kecilin judul */
+  .products-page .product-title{
+
+    font-size: 38px;
+
+  }
+
+  /* kecilin gap */
+  .products-page .product-list{
+
+    gap: 25px;
+
+  }
+
+  /* card full */
+  .products-page .product-card{
+
+    width: 100%;
+
+    max-width: 320px;
+
+  }
+
+  /* kecilin gambar */
+  .products-page .product-img{
+
+    height: 280px;
+
+  }
+
+}
+
+/* =========================================
+   PRODUCT ICONS SAME AS BEST SELLER
+========================================= */
+
+/* gambar jadi parent absolute */
+.product-img{
+  position:relative;
+}
+
+/* container icon */
+.product-img .card-actions{
+
+  position:absolute;
+
+  top:50%;
+  right:15px;
+
+  transform:translateY(-50%);
+
+  display:grid;
+
+  gap:10px;
+
+  opacity:0;
+
+  transition:0.4s;
+}
+
+/* saat hover card */
+.product-card:hover .card-actions{
+
+  opacity:1;
+
+  transform:translate(0,-50%);
+}
+
+/* tombol bulat */
+.product-img .action-btn{
+
+  width:48px;
+  height:48px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:white;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  cursor:pointer;
+
+  font-size:22px;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+
+  transition:0.3s;
+}
+
+/* hover tombol */
+.product-img .action-btn:hover{
+
+  background:black;
+
+  color:white;
+}
+
+/* icon */
+.product-img .action-btn ion-icon{
+
+  font-size:22px;
+}
+
+.total-box{
+  margin-top: auto; 
+  /* dorong ke bawah selalu */
+}
+
+.checkout-final{
+  position: sticky; 
+  bottom: 0; 
+  /* nempel di bawah */
+
+  background: white; 
+  /* biar ga transparan */
+
+  padding: 10px;
+}
+
+/* SECTION HERO PRODUCTS */
+.products-hero{
+  width: 100%;
+  margin-top: 0; /* hilangin jarak atas */
+  padding-top: 20px; /* dikit aja */
+}
+
+/* BOX COKLAT */
+.products-banner{
+  width: 100%; /* full lebar */
+  background: #d8d1c5;
+
+  padding: 70px 20px; /* tinggi banner */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0; /* full rata */
+}
+
+/* JUDUL */
+.products-banner h1{
+  font-size: 48px;
+  letter-spacing: 10px;
+  color: black;
+  margin-bottom: 15px;
+}
+
+/* DESKRIPSI */
+.products-banner p{
+  font-size: 18px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

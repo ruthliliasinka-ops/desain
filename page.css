@@ -1,0 +1,351 @@
+/* ================= ABOUT US PAGE ================= */
+
+/* ===== RESET (biar semua elemen defaultnya sama) ===== */
+*{
+  margin: 0; /* hapus jarak luar default */
+  padding: 0; /* hapus jarak dalam default */
+  box-sizing: border-box; /* biar width & height lebih stabil */
+  font-family: 'Urbanist', sans-serif; /* font utama */
+}
+
+/* ===== BODY ===== */
+body{
+  background: #fdfdfd; /* warna background halaman */
+}
+
+/* ===== HERO (bagian atas About) ===== */
+.about-hero{
+  margin-top: 70px; /* jarak dari atas (biar ga ketutup navbar) */
+  height: 180px; /* tinggi section hero */
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); /* overlay gelap */
+  display: flex; /* aktifin flexbox */
+  flex-direction: column; /* isi ditumpuk ke bawah */
+  justify-content: center; /* posisi tengah vertikal */
+  align-items: center; /* posisi tengah horizontal */
+  color: white; /* warna teks */
+}
+
+.about-hero h1{
+  font-size: 32px; /* ukuran judul */
+}
+
+.about-hero p{
+  font-size: 14px; /* ukuran teks kecil */
+  opacity: 0.9; /* sedikit transparan */
+}
+
+/* ===== SECTION UTAMA ===== */
+.about-modern{
+  padding: 80px 40px; /* jarak dalam (atas-bawah 80, kanan-kiri 40) */
+}
+
+/* ===== CONTAINER (bungkus isi) ===== */
+.about-container{
+  max-width: 1100px; /* lebar maksimal biar ga terlalu lebar */
+  margin: auto; /* center ke tengah */
+  display: flex; /* pakai flexbox */
+  gap: 50px; /* jarak antar elemen */
+  align-items: center; /* rata tengah vertikal */
+  flex-wrap: wrap; /* biar responsive (turun ke bawah kalau sempit) */
+}
+
+/* ===== IMAGE ===== */
+.about-img{
+  flex: 1; /* bagi ruang sama rata */
+}
+
+.about-img img{
+  width: 100%; /* gambar mengikuti lebar container */
+  border-radius: 20px; /* sudut melengkung */
+}
+
+/* ===== TEXT ===== */
+.about-text{
+  flex: 1; /* bagi ruang sama rata */
+}
+
+.mini-title{
+  color: #e89cae; /* warna pink */
+  font-size: 14px; /* ukuran kecil */
+  font-weight: 600; /* agak tebal */
+}
+
+.about-text h2{
+  font-size: 30px; /* ukuran judul */
+  margin: 10px 0 15px; /* jarak atas 10, bawah 15 */
+}
+
+.about-text p{
+  color: #666; /* warna abu teks */
+  margin-bottom: 15px; /* jarak bawah */
+}
+
+/* ===== FEATURES (kotak-kotak kecil) ===== */
+.features{
+  margin-top: 20px; /* jarak dari atas */
+  display: grid; /* pakai grid layout */
+  grid-template-columns: 1fr 1fr; /* 2 kolom sama rata */
+  gap: 15px; /* jarak antar kotak */
+}
+
+.feature{
+  background: white; /* background putih */
+  padding: 12px 15px; /* jarak dalam */
+  border-radius: 10px; /* sudut melengkung */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05); /* bayangan halus */
+  font-size: 14px; /* ukuran teks */
+  transition: 0.3s; /* animasi halus */
+}
+
+.feature:hover{
+  transform: translateY(-3px); /* naik dikit saat hover */
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-modern{
+  padding: 100px 8%;
+  background: #f8f8f8;
+}
+
+.about-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* IMAGE */
+.about-img img{
+  width: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* TEXT */
+.about-text{
+  color: #111;
+}
+
+.mini-title{
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #b68d62;
+  font-weight: 700;
+}
+
+/* JUDUL */
+.about-text h2{
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 18px 0 25px;
+
+  color: #000;
+}
+
+/* PARAGRAF */
+.about-text p{
+  font-size: 15px;
+  line-height: 1.9;
+  color: #555;
+
+  margin-bottom: 20px;
+}
+
+/* FEATURES */
+.features{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.feature{
+  background: white;
+  padding: 18px 20px;
+
+  border-radius: 18px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #222;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .about-container{
+    grid-template-columns: 1fr;
+  }
+
+  .about-text h2{
+    font-size: 36px;
+  }
+
+}
+
+/* ================= CONTACT PAGE ================= */
+
+/* ===== RESET DASAR ===== */
+* {
+    margin: 0; /* hapus jarak luar default browser */
+    padding: 0; /* hapus jarak dalam default */
+    box-sizing: border-box; /* biar ukuran elemen lebih konsisten */
+    font-family: 'Arial', sans-serif; /* font utama halaman */
+}
+
+/* ===== BODY ===== */
+body {
+    background: #fdfdfd; /* warna background putih soft */
+}
+
+/* ===== HERO / HEADER ATAS ===== */
+.hero {
+    background: url('benerser.mp4') center/cover no-repeat; 
+    /* background (sebenarnya video, tapi ini fallback kalau video ga jalan) */
+
+    height: 350px; /* tinggi section hero */
+    position: relative; /* supaya overlay & video bisa diatur */
+    color: white; /* warna teks */
+    text-align: center; /* teks rata tengah */
+}
+
+/* overlay gelap biar teks kebaca */
+.hero::after {
+    content: ''; /* wajib buat pseudo element */
+    position: absolute; /* posisi bebas di dalam hero */
+    width: 100%; /* lebar penuh */
+    height: 100%; /* tinggi penuh */
+    background: rgba(0,0,0,0.4); /* warna hitam transparan */
+    top: 0; /* dari atas */
+    left: 0; /* dari kiri */
+}
+
+/* isi hero */
+.hero-content {
+    position: relative; /* biar di atas overlay */
+    top: 50%; /* geser ke tengah vertikal */
+    transform: translateY(-50%); /* bener-bener center */
+}
+
+/* judul */
+.hero h1 {
+    color: #e89cae; /* warna pink brand */
+    font-size: 42px; /* ukuran besar */
+    letter-spacing: 2px; /* jarak antar huruf */
+}
+
+/* deskripsi */
+.hero p {
+    margin-top: 15px; /* jarak dari judul */
+    font-size: 14px; /* ukuran kecil */
+    opacity: 0.9; /* sedikit transparan */
+}
+
+/* ===== CONTACT BOX (3 KOTAK) ===== */
+.contact-container {
+    display: flex; /* bikin elemen sejajar horizontal */
+    justify-content: center; /* posisi di tengah */
+    background: white; /* background putih */
+    padding: 50px 0; /* jarak atas bawah */
+}
+
+/* masing-masing box */
+.box {
+    width: 300px; /* lebar tiap box */
+    text-align: center; /* isi rata tengah */
+    padding: 20px; /* jarak dalam */
+    border-right: 1px solid #eee; /* garis pemisah antar box */
+}
+
+/* box terakhir hilang garis */
+.box:last-child {
+    border-right: none; /* hapus garis kanan */
+}
+
+/* icon */
+.box i {
+    font-size: 30px; /* ukuran icon */
+    color: #e89cae; /* warna pink */
+    margin-bottom: 15px; /* jarak ke bawah */
+}
+
+/* judul box */
+.box h3 {
+    margin-bottom: 10px; /* jarak bawah */
+    color: #333; /* warna teks gelap */
+}
+
+/* deskripsi */
+.box p {
+    font-size: 13px; /* ukuran teks kecil */
+    color: #777; /* warna abu */
+    margin-bottom: 10px; /* jarak bawah */
+}
+
+/* link penting (IG, WA, Email) */
+.highlight {
+    color: #e89cae; /* warna utama */
+    font-weight: bold; /* teks tebal */
+    font-size: 13px; /* ukuran kecil */
+    text-decoration: none; /* hilang garis bawah */
+}
+
+/* efek hover */
+.highlight:hover {
+    text-decoration: underline; /* muncul garis saat disentuh */
+}
+
+/* ===== MAP ===== */
+.map {
+    width: 100%; /* lebar penuh */
+    height: 300px; /* tinggi map */
+}
+
+/* iframe map */
+iframe {
+    width: 100%; /* full container */
+    height: 100%; /* full container */
+    border: 0; /* hilang border */
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #1c1c1c; /* warna gelap */
+    text-align: center; /* rata tengah */
+    padding: 20px; /* jarak dalam */
+}
+
+/* icon sosial */
+.social i {
+    color: white; /* warna putih */
+    margin: 0 10px; /* jarak antar icon */
+    font-size: 18px; /* ukuran icon */
+    cursor: pointer; /* cursor jadi tangan */
+    transition: 0.3s; /* animasi halus */
+}
+
+/* efek hover icon */
+.social i:hover {
+    color: #e89cae; /* berubah jadi pink */
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+.bg-video {
+    position: absolute; /* posisi bebas dalam hero */
+    top: 0; /* dari atas */
+    left: 0; /* dari kiri */
+    width: 100%; /* lebar penuh */
+    height: 100%; /* tinggi penuh */
+    object-fit: cover; /* biar video nutup penuh tanpa gepeng */
+    z-index: -1; /* taruh di belakang teks */
+}

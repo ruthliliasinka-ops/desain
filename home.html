@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Éloura - Home</title>
+
+
+
+<link rel="stylesheet" href="style2.css">
+<link rel="stylesheet" href="shop.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <h2 class="logo">Éloura</h2>
+
+  <nav class="navbar">
+  <a href="home.html">Home</a>
+  <a href="produk.html">Products</a>
+  <a href="aboutus.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+
+  <div class="header-right">
+    <input type="text" placeholder="Search..." class="search" id="searchInput">
+    <span>🔍</span>
+    <a href="cart.html" class="cart-icon">
+  🛒
+  <span id="cart-count">0</span>
+</a>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+
+  <video class="hero-video" src="bannerrr.mp4" autoplay muted loop></video>
+
+  <div class="hero-text">
+    <h1>Glow Starts With Care</h1>
+    <p>Clean skincare for healthy skin</p>
+
+    <a href="produk.html" class="discover-btn">
+    Discover
+  </a>
+  </div>
+
+  
+
+</section>
+
+
+
+<!-- ================= BEST SELLER ================= -->
+<section class="section">
+
+  <div class="container">
+
+    <!-- JUDUL -->
+    <h2 class="section-title center">Our Bestseller</h2>
+
+    
+
+    <!-- LIST PRODUK -->
+    <div class="scroll product-wrapper">
+
+      <!-- PRODUK 1 -->
+      <div class="shop-card" 
+data-name="Cleanser" 
+data-price="480000" 
+data-desc="Membersihkan wajah secara mendalam tanpa membuat kulit terasa kering serta membantu menjaga skin barrier tetap sehat."
+data-img='["01j.jpg","011.png"]'>
+
+  <div class="card-banner img-holder">
+
+    <!-- GAMBAR UTAMA (cover di home) -->
+    <img src="01j.jpg" class="img-cover">
+
+          <span class="badge">BEST</span>
+
+          <div class="card-actions">
+            <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+          </div>
+
+         
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Cleanser</h3>
+
+           <p class="product-desc">
+    "Membersihkan wajah secara mendalam tanpa membuat kulit terasa kering serta membantu menjaga skin barrier tetap sehat."
+
+          <div class="price">
+            <span class="span">Rp 480.000</span>
+          </div>
+
+          
+        </div>
+
+      </div>
+
+
+      <!-- PRODUK 2 -->
+      <div class="shop-card" 
+data-name="Cleanser" 
+data-price="480000" 
+data-desc="Membantu mencerahkan kulit kusam, menyamarkan noda hitam, dan membuat wajah tampak lebih glowing."
+data-img='["000j.jpg","0000.png"]'>
+
+  <div class="card-banner img-holder">
+    
+    <!-- GAMBAR UTAMA (cover di home) -->
+    <img src="0000.png" class="img-cover">
+
+          <span class="badge">BEST</span>
+
+          <div class="card-actions">
+            <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+          </div>
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Serum</h3>
+
+           <p class="product-desc">
+    "Membantu mencerahkan kulit kusam, menyamarkan noda hitam, dan membuat wajah tampak lebih glowing."
+  </p>
+
+          <div class="price">
+            <span class="span">Rp 450.000</span>
+          </div>
+
+          
+        </div>
+
+      </div>
+
+
+      <!-- PRODUK 3 -->
+      <div class="shop-card" 
+data-name="Moisturizer" 
+data-price="560000" 
+data-desc="Memberikan hidrasi intens sepanjang hari untuk menjaga kulit tetap lembap, halus, dan kenyal."
+data-img='["777.png","7777.png"]'>
+
+  <div class="card-banner img-holder">
+    
+    <!-- GAMBAR UTAMA (cover di home) -->
+    <img src="777.png" class="img-cover">
+
+          <span class="badge">BEST</span>
+
+          <div class="card-actions">
+            <button class="action-btn" onclick="goToDetail(this)">
+  <ion-icon name="bag-handle-outline"></ion-icon>
+</button>
+
+<button type="button" class="action-btn" onclick="addToCart(event, this)">
+  <ion-icon name="cart-outline"></ion-icon>
+</button>
+
+          </div>
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Moisturizer</h3>
+
+           <p class="product-desc">
+    "Memberikan hidrasi intens sepanjang hari untuk menjaga kulit tetap lembap, halus, dan kenyal."
+  </p>
+
+          <div class="price">
+            <span class="span">Rp 390.000</span>
+          </div>
+
+          
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>© 2025 Éloura STORE. All rights reserved.</p>
+</footer>
+
+
+
+
+
+
+
+<script src="script2.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Éloura Receipt</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+/* ================= RECEIPT / STRUK PAGE ================= */
+
+/* ===== HTML ROOT ===== */
+html{ 
+  font-size:13px; /* ukuran dasar font (semua rem akan ikut ini) */
+}
+
+/* ===== RESET DASAR ===== */
+*{
+  margin:0; /* hapus jarak luar default */
+  padding:0; /* hapus jarak dalam default */
+  box-sizing:border-box; /* biar ukuran lebih stabil */
+  font-family:'Urbanist',sans-serif; /* font utama */
+}
+
+/* ===== BODY ===== */
+body{
+  height:100vh; /* tinggi full layar */
+  display:flex; /* supaya bisa center */
+  justify-content:center; /* center horizontal */
+  align-items:center; /* center vertikal */
+  overflow:hidden; /* hilangkan scroll */
+}
+
+
+/* ================= RECEIPT BOX ================= */
+.receipt{
+  width:100%; /* lebar penuh */
+  max-width:400px; /* maksimal 400px (biar kecil kayak struk) */
+  background:#fff; /* background putih */
+  border-radius:24px; /* sudut melengkung */
+  box-shadow:0 15px 40px rgba(0,0,0,.08); /* bayangan */
+  overflow:hidden; /* sembunyikan yang keluar */
+  transform:scale(0.9); /* kecilin dikit */
+  transform-origin:top center; /* titik pengecilan dari atas */
+}
+
+
+/* ================= HEADER ================= */
+.header{
+  padding:12px; /* jarak dalam */
+  text-align:center; /* teks tengah */
+  border-bottom:1px solid #eee; /* garis bawah */
+}
+
+/* logo brand */
+.brand-logo img{
+  width:100%; /* lebar penuh */
+  height:80px; /* tinggi tetap */
+  object-fit:cover; /* biar ga gepeng */
+  border-radius:12px; /* sudut */
+  margin-top:8px; /* jarak atas */
+}
+
+
+/* ================= STATUS ================= */
+.status{
+  margin:8px; /* jarak luar */
+  padding:6px; /* jarak dalam */
+  text-align:center; /* tengah */
+  background:#fff4f8; /* pink muda */
+  border-radius:10px; /* sudut */
+  font-size:10px; /* kecil */
+  font-weight:700; /* tebal */
+  color:#cc5d88; /* warna pink tua */
+}
+
+
+/* ================= INFO GRID ================= */
+.info{
+  padding:0 8px; /* jarak kiri kanan */
+  display:grid; /* pakai grid */
+  grid-template-columns:1fr 1fr; /* 2 kolom */
+  gap:6px; /* jarak antar kotak */
+}
+
+.info div{
+  background:#fafafa; /* abu muda */
+  padding:6px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+  font-size:9px; /* kecil */
+}
+
+
+/* ================= ADDRESS ================= */
+.address-box{
+  margin:8px; /* jarak luar */
+  padding:6px; /* jarak dalam */
+  background:#fafafa; /* abu muda */
+  border-radius:8px; /* sudut */
+  font-size:9px; /* kecil */
+}
+
+
+/* ================= ITEMS ================= */
+.items{
+  margin:8px; /* jarak */
+  background:#fafafa; /* background */
+  padding:6px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+}
+
+.item{
+  display:flex; /* sejajar kiri kanan */
+  justify-content:space-between; /* kiri kanan */
+  font-size:10px; /* kecil */
+  padding:4px 0; /* jarak atas bawah */
+  border-bottom:1px dashed #ddd; /* garis putus-putus */
+}
+
+
+/* ================= SUMMARY ================= */
+.summary{
+  margin:8px; /* jarak */
+  padding:6px; /* jarak dalam */
+  border:1px solid #eee; /* border */
+  border-radius:8px; /* sudut */
+}
+
+.line{
+  display:flex; /* sejajar */
+  justify-content:space-between; /* kiri kanan */
+  font-size:10px; /* kecil */
+  margin:4px 0; /* jarak */
+}
+
+.grand{
+  font-weight:800; /* tebal banget */
+  font-size:12px; /* lebih besar */
+  border-top:1px dashed #ccc; /* garis atas */
+  padding-top:4px; /* jarak atas */
+}
+
+
+/* ================= PAYMENT ================= */
+.payment{
+  margin:8px; /* jarak */
+  background:#fff7fa; /* pink muda */
+  padding:10px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+  text-align:center; /* tengah */
+  font-size:11px; /* ukuran */
+}
+
+
+/* ================= FOOTER ================= */
+.footer{
+  text-align:center; /* tengah */
+  font-size:9px; /* kecil */
+  padding:6px; /* jarak */
+  border-top:1px dashed #ddd; /* garis atas */
+}
+
+
+/* ================= BUTTONS ================= */
+.buttons{
+  display:flex; /* sejajar */
+  gap:8px; /* jarak antar tombol */
+  padding:10px; /* jarak dalam */
+  border-top:1px dashed #ddd; /* garis atas */
+  background:#fff; /* putih */
+}
+
+button{
+  flex:1; /* semua tombol sama lebar */
+  padding:10px; /* tinggi tombol */
+  border:none; /* tanpa border */
+  border-radius:10px; /* sudut */
+  font-weight:700; /* tebal */
+  cursor:pointer; /* tangan */
+}
+
+/* tombol print */
+.print{ 
+  background:#111; /* hitam */
+  color:#fff; /* teks putih */
+}
+
+/* tombol download */
+.download{ 
+  background:#f7b6c8; /* pink */
+}
+</style>
+</head>
+
+<body>
+
+<div class="receipt" id="receipt">
+
+<!-- HEADER -->
+<div class="header">
+<h2>ÉLOURA</h2>
+<p>Glow naturally, live beautifully</p>
+<div class="brand-logo">
+<img src="elu.jpg">
+</div>
+</div>
+
+<div class="status">Order Confirmed ✔</div>
+
+<!-- INFO -->
+<div class="info">
+<div><b>Invoice</b><br><span id="invoiceNo"></span></div>
+<div><b>Date</b><br><span id="todayDate"></span></div>
+<div><b>Payment</b><br><span id="paymentMethod"></span></div>
+<div><b>Shipping</b><br><span id="shippingType"></span></div>
+</div>
+
+<!-- ADDRESS -->
+<div class="address-box">
+<b>Shipping Address</b><br>
+<span id="userAddress"></span>
+</div>
+
+<!-- ITEMS -->
+<div class="items">
+<div id="items"></div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+<div class="line"><span>Subtotal</span><span id="subtotal"></span></div>
+<div class="line"><span>Shipping</span><span id="ship"></span></div>
+<div class="line"><span>Discount</span><span id="discount"></span></div>
+<div class="grand"><span>Total</span><span id="total"></span></div>
+</div>
+
+<!-- PAYMENT -->
+<div class="payment" id="paymentBox">
+Paid ✔<br>
+<img id="payLogo" src="" width="80">
+</div>
+
+<div class="footer">
+Thank you for shopping 💖
+</div>
+
+<!-- BUTTON -->
+<div class="buttons">
+<button class="print" onclick="window.print()">Print</button>
+<button class="download" onclick="downloadPDF()">Download PDF</button>
+</div>
+
+</div>
+
+<script>
+
+// ambil data
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let shipping = Number(localStorage.getItem("shipping")) || 0;
+let payMethod = (localStorage.getItem("payment") || "Bank Transfer").trim();
+
+// config payment
+const paymentConfig = {
+  "DANA": { discount: 10000, logo: "dana.jpg" },
+  "OVO": { discount: 8000, logo: "ovo.jpg" },
+  "GoPay": { discount: 12000, logo: "gopay.jpg" },
+  "Bank Transfer": { discount: 0, logo: "bank.jpg" },
+  "COD": { discount: 0, logo: "" }
+};
+
+let config = paymentConfig[payMethod] || { discount:0, logo:"" };
+
+// hitung
+let subtotal = 0;
+
+cart.forEach(item=>{
+  let total = item.price * (item.qty || 1);
+  subtotal += total;
+
+  document.getElementById("items").innerHTML += `
+  <div class="item">
+    <span>${item.name} x${item.qty||1}</span>
+    <span>Rp ${total.toLocaleString("id-ID")}</span>
+  </div>`;
+});
+
+let grand = subtotal + shipping - config.discount;
+
+// tampil data
+document.getElementById("subtotal").innerText="Rp "+subtotal.toLocaleString("id-ID");
+document.getElementById("ship").innerText=shipping? "Rp "+shipping.toLocaleString("id-ID"):"FREE";
+document.getElementById("discount").innerText=config.discount? "- Rp "+config.discount.toLocaleString("id-ID"):"-";
+document.getElementById("total").innerText="Rp "+grand.toLocaleString("id-ID");
+
+document.getElementById("invoiceNo").innerText="EL-"+Math.floor(100000+Math.random()*900000);
+document.getElementById("todayDate").innerText=new Date().toLocaleDateString("id-ID");
+document.getElementById("paymentMethod").innerText=payMethod;
+document.getElementById("shippingType").innerText=shipping==20000?"Express":"Regular";
+document.getElementById("userAddress").innerText=localStorage.getItem("address")||"-";
+
+// LOGO PAYMENT
+const logoEl = document.getElementById("payLogo");
+
+if(config.logo && logoEl){
+  logoEl.src = config.logo;
+}
+
+// COD tanpa logo
+if(payMethod === "COD"){
+  document.getElementById("paymentBox").innerHTML = "Cash On Delivery";
+}
+
+// download pdf
+function downloadPDF(){
+  html2pdf().from(document.getElementById("receipt")).save("receipt.pdf");
+}
+
+</script>
+
+</body>
+</html>

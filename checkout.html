@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout Éloura</title>
+
+
+  <link rel="stylesheet" href="shop.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================= CHECKOUT PAGE ================= */
+
+/* ===== RESET DASAR ===== */
+*{
+margin:0; /* hapus jarak luar default semua elemen */
+padding:0; /* hapus jarak dalam default */
+box-sizing:border-box; /* biar ukuran width/height lebih stabil */
+font-family:'Urbanist',sans-serif; /* font utama */
+}
+
+/* ===== BODY ===== */
+body{
+background:linear-gradient(135deg,#fff7fa,#f5f5f5); /* gradasi background */
+height:100vh; /* tinggi full layar */
+overflow:hidden; /* sembunyikan scroll */
+color:#222; /* warna teks utama */
+}
+
+
+/* ================= PROGRESS STEP ================= */
+.progress{
+width:100%; /* lebar penuh */
+padding:12px 0; /* jarak atas bawah */
+display:flex; /* sejajar horizontal */
+justify-content:center; /* posisi ke tengah */
+gap:50px; /* jarak antar step */
+font-weight:600; /* teks agak tebal */
+font-size:14px; /* ukuran teks */
+}
+
+.step{
+position:relative; /* supaya garis bawah bisa diatur */
+color:#bbb; /* warna abu (belum aktif) */
+}
+
+.step.active{
+color:#000; /* warna hitam (aktif) */
+}
+
+.step.active:before{
+content:""; /* wajib untuk pseudo element */
+position:absolute; /* posisi relatif ke .step */
+bottom:-8px; /* posisi di bawah teks */
+left:0; /* mulai dari kiri */
+width:100%; /* lebar penuh */
+height:3px; /* tinggi garis */
+background:#f7b6c8; /* warna garis (pink) */
+border-radius:20px; /* biar halus */
+}
+
+
+/* ================= LAYOUT UTAMA ================= */
+.container{
+width:94%; /* lebar hampir full layar */
+height:calc(100vh - 60px); 
+/* tinggi = layar - 60px (biar muat progress bar) */
+
+margin:auto; /* center horizontal */
+display:grid; /* pakai grid layout */
+grid-template-columns:1.55fr 1fr; 
+/* kiri lebih besar (form), kanan lebih kecil (summary) */
+
+gap:20px; /* jarak antar kolom */
+padding-bottom:15px; /* jarak bawah */
+}
+
+
+/* ================= CARD (KOTAK) ================= */
+.card{
+background:rgba(255,255,255,.95); /* putih transparan */
+backdrop-filter:blur(10px); /* efek blur kaca */
+border-radius:24px; /* sudut melengkung */
+box-shadow:0 8px 30px rgba(0,0,0,.04); /* bayangan halus */
+padding:22px; /* jarak dalam */
+overflow:hidden; /* sembunyikan overflow */
+}
+
+
+/* ================= BAGIAN KIRI ================= */
+h2{
+font-size:24px; /* ukuran judul utama */
+margin-bottom:12px; /* jarak bawah */
+}
+
+.section-title{
+font-size:14px; /* ukuran kecil */
+font-weight:700; /* tebal */
+margin:10px 0 6px; /* jarak atas & bawah */
+}
+
+
+/* INPUT FORM */
+.input{
+width:100%; /* full lebar container */
+padding:10px; /* jarak dalam */
+border:1px solid #ececec; /* garis tipis */
+border-radius:14px; /* sudut melengkung */
+margin-bottom:8px; /* jarak bawah */
+font-size:12px; /* ukuran teks */
+background:#fafafa; /* background abu sangat muda */
+}
+
+.input:focus{
+outline:none; /* hilangkan garis biru default */
+border:1px solid #f7b6c8; /* border pink saat aktif */
+background:#fff; /* jadi putih */
+}
+
+/* textarea khusus */
+textarea.input{
+height:48px; /* tinggi textarea */
+resize:none; /* tidak bisa di resize */
+}
+
+/* 2 kolom input */
+.row{
+display:grid; /* grid layout */
+grid-template-columns:1fr 1fr; /* 2 kolom */
+gap:10px; /* jarak antar kolom */
+}
+
+
+/* ================= PAYMENT ================= */
+.pay-grid{
+display:grid; /* grid */
+grid-template-columns:1fr 1fr; /* 2 kolom */
+gap:8px; /* jarak */
+margin-top:5px; /* jarak dari atas */
+}
+
+.pay{
+border:1px solid #eee; /* border tipis */
+padding:10px; /* jarak dalam */
+border-radius:14px; /* sudut */
+display:flex; /* sejajar */
+align-items:center; /* tengah */
+gap:10px; /* jarak */
+cursor:pointer; /* cursor tangan */
+background:#fff; /* putih */
+font-size:12px; /* kecil */
+transition:.3s; /* animasi */
+}
+
+.pay:hover{
+border-color:#f7b6c8; /* jadi pink */
+transform:translateY(-2px); /* naik dikit */
+}
+
+.pay input{
+accent-color:#f7b6c8; /* warna radio button */
+}
+
+
+/* ================= BUTTON ================= */
+.btn-pay{
+margin-top:16px; /* jarak atas */
+width:100%; /* full lebar */
+padding:14px; /* tinggi tombol */
+border:none; /* tanpa border */
+border-radius:16px; /* sudut */
+background:linear-gradient(135deg,#000,#444); /* gradasi hitam */
+color:white; /* teks putih */
+font-size:15px; /* ukuran */
+font-weight:700; /* tebal */
+cursor:pointer; /* tangan */
+transition:.3s; /* animasi */
+}
+
+.btn-pay:hover{
+transform:translateY(-3px); /* naik saat hover */
+}
+
+
+/* ================= RIGHT (SUMMARY) ================= */
+.summary-title{
+font-size:22px; /* judul */
+font-weight:800; /* tebal banget */
+margin-bottom:15px; /* jarak bawah */
+}
+
+.item{
+display:flex; /* sejajar */
+gap:12px; /* jarak */
+margin-bottom:12px; /* jarak bawah */
+padding-bottom:12px; /* jarak bawah dalam */
+border-bottom:1px solid #eee; /* garis */
+}
+
+.item img{
+width:70px; /* lebar gambar */
+height:70px; /* tinggi */
+object-fit:cover; /* biar tidak gepeng */
+border-radius:14px; /* sudut */
+}
+
+.item h4{
+font-size:14px; /* ukuran */
+margin-bottom:4px; /* jarak */
+}
+
+.item p{
+font-size:12px; /* kecil */
+color:#777; /* abu */
+}
+
+.badge{
+display:inline-block; /* biar bisa diatur */
+margin-top:6px; /* jarak */
+background:#fff1f5; /* pink muda */
+color:#d86b95; /* pink tua */
+padding:5px 10px; /* jarak */
+border-radius:30px; /* bulat */
+font-size:11px; /* kecil */
+font-weight:600; /* tebal */
+}
+
+
+/* ================= DELIVERY ================= */
+.delivery{
+margin:12px 0; /* jarak */
+padding:12px; /* dalam */
+background:#fff7fa; /* pink muda */
+border-radius:14px; /* sudut */
+}
+
+.delivery h4{
+font-size:14px; /* ukuran */
+margin-bottom:5px; /* jarak */
+}
+
+.delivery p{
+font-size:12px; /* kecil */
+}
+
+
+/* ================= TOTAL ================= */
+.total-box{
+margin-top:14px; /* jarak atas */
+}
+
+.line{
+display:flex; /* sejajar */
+justify-content:space-between; /* kiri-kanan */
+margin:8px 0; /* jarak */
+font-size:14px; /* ukuran */
+}
+
+.grand{
+margin-top:12px; /* jarak */
+padding-top:12px; /* jarak dalam */
+border-top:1px solid #ddd; /* garis atas */
+font-size:20px; /* besar */
+font-weight:800; /* tebal */
+display:flex; /* sejajar */
+justify-content:space-between; /* kiri kanan */
+}
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:900px){
+
+body{
+overflow:auto; /* aktifkan scroll */
+}
+
+.container{
+height:auto; /* tinggi menyesuaikan */
+grid-template-columns:1fr; /* jadi 1 kolom */
+}
+
+.checkout-final{
+margin-top:18px; /* jarak */
+width:100%; /* full */
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="progress">
+<div class="step active">Cart</div>
+<div class="step active">Checkout</div>
+
+</div>
+
+<div class="container">
+
+<!-- LEFT -->
+<div class="card">
+
+<h2>Secure Checkout</h2>
+
+<div class="section-title">
+Contact Information
+</div>
+
+<input class="input" placeholder="Email">
+<input class="input" placeholder="Full Name">
+
+<input class="input" placeholder="Phone">
+
+<textarea class="input" rows="4" placeholder="Shipping Address"></textarea>
+
+<div class="section-title">
+Payment Method
+</div>
+
+<div class="pay-grid">
+
+<label class="pay">
+<input type="radio" name="pay" checked>
+Bank Transfer
+</label>
+
+<label class="pay">
+<input type="radio" name="pay">
+DANA
+</label>
+
+<label class="pay">
+<input type="radio" name="pay">
+OVO
+</label>
+
+<label class="pay">
+<input type="radio" name="pay">
+COD
+</label>
+
+</div>
+
+<div class="section-title">
+Shipping
+</div>
+
+<select id="shipping" class="input">
+<option value="free">
+Free Shipping
+</option>
+
+<option value="express">
+Express +20k
+</option>
+</select>
+
+
+<div class="section-title">
+Message For Seller
+</div>
+
+<textarea 
+class="input" 
+rows="4"
+placeholder="Notes: gift wrap, fragile package, preferred delivery time...">
+</textarea>
+
+
+
+
+</div>
+
+
+<!-- RIGHT -->
+<div class="card">
+
+<div class="summary-title">
+Order Summary
+</div>
+
+<div id="items"></div>
+
+<div class="delivery">
+<h4>Estimated Delivery</h4>
+<p>2–4 Business Days 🚚</p>
+</div>
+
+<div class="total-box">
+<div class="line">
+<span>Subtotal</span>
+<span id="subtotal"></span>
+</div>
+
+<div class="line">
+<span>Shipping</span>
+<span id="ongkir"></span>
+</div>
+
+<div class="grand">
+<span>Total</span>
+<span id="total"></span>
+</div>
+
+<button class="btn-pay checkout-final" onclick="bayar()">
+Pay Now 
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+const cart = JSON.parse(
+localStorage.getItem("cart")
+)||[];
+
+const itemsEl=
+document.getElementById("items");
+
+const subtotalEl=
+document.getElementById("subtotal");
+
+const ongkirEl=
+document.getElementById("ongkir");
+
+const totalEl=
+document.getElementById("total");
+
+const shipping=
+document.getElementById("shipping");
+
+let subtotal=0;
+
+cart.forEach(item=>{
+
+let price = Number(item.price) || 0;
+let qty = Number(item.qty) || 1; // 🔥 ambil qty
+let totalItem = Number(item.total) || (price * qty); // 🔥 total per item
+
+subtotal += totalItem;
+
+let img =
+Array.isArray(item.img)
+? item.img[0]
+: item.img;
+
+itemsEl.innerHTML += `
+<div class="item">
+<img src="${img}">
+<div>
+<h4>${item.name}</h4>
+<p>Rp ${price.toLocaleString()} x ${qty}</p>
+<p><b>Rp ${totalItem.toLocaleString()}</b></p>
+<span class="badge">Best Seller</span>
+</div>
+</div>
+`;
+
+});
+
+function update(){
+
+let ongkir=0;
+
+/* kalau pilih free */
+if(shipping.value==="free"){
+ongkir=0;
+}
+
+/* kalau pilih express */
+if(shipping.value==="express"){
+ongkir=20000;
+}
+
+let total=subtotal+ongkir;
+
+subtotalEl.innerText=
+"Rp "+subtotal.toLocaleString();
+
+ongkirEl.innerText=
+ongkir===0
+? "FREE ✨"
+: "Rp "+ongkir.toLocaleString();
+
+totalEl.innerText=
+"Rp "+total.toLocaleString();
+
+}
+
+
+shipping.addEventListener(
+"change",
+update
+);
+
+update();
+
+function bayar(){
+
+let alamat=
+document.querySelector(
+'textarea'
+).value;
+
+/* simpan alamat */
+localStorage.setItem(
+"address",
+alamat
+);
+
+/* simpan shipping */
+let ongkir=0;
+
+if(
+shipping.value==="reguler"
+){
+ongkir=
+subtotal>=200000
+?0
+:10000;
+}
+
+if(
+shipping.value==="express"
+){
+ongkir=20000;
+}
+
+localStorage.setItem(
+"shipping",
+ongkir
+);
+
+
+/* simpan payment yg dipilih */
+let pay=
+document.querySelector(
+'input[name="pay"]:checked'
+).parentElement.innerText.trim();
+
+localStorage.setItem(
+"payment",
+pay
+);
+
+
+/* optional data checkout */
+localStorage.setItem(
+"checkout",
+JSON.stringify({
+subtotal:subtotal
+})
+);
+
+window.location.href=
+"receipt1.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+

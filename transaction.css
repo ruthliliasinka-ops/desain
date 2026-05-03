@@ -1,0 +1,567 @@
+/* ================= CART PAGE ================= */
+
+/* ===== BODY (halaman utama) ===== */
+body{
+  font-family: Arial; /* font yang dipakai di seluruh halaman */
+  margin: 0; /* hilangkan jarak luar default browser */
+  background: #f5f5f5; /* warna background abu muda */
+}
+
+/* ===== CONTAINER (pembungkus semua isi) ===== */
+.container{
+  width: 90%; /* lebar 90% dari layar (biar ada jarak kanan kiri) */
+  margin: 40px auto; /* jarak atas bawah 40px, auto = tengah */
+}
+
+/* ===== JUDUL ===== */
+h1{
+  margin-bottom: 20px; /* jarak bawah dari judul ke konten */
+}
+
+/* ================= TABLE CART ================= */
+
+/* tabel utama cart */
+.cart-table{
+  width: 100%; /* lebar full mengikuti container */
+  background: white; /* background putih */
+  border-radius: 12px; /* sudut melengkung */
+  padding: 20px; /* jarak dalam */
+}
+
+/* header tabel & item */
+.cart-header,
+.cart-item{
+  display: grid; /* pakai grid supaya rapi per kolom */
+  grid-template-columns: 2fr 1fr 1fr 1fr 50px; 
+  /* pembagian kolom:
+     2fr = produk lebih lebar
+     1fr = kolom lain sama rata
+     50px = kolom tombol hapus kecil */
+  align-items: center; /* isi rata tengah vertikal */
+  padding: 10px 0; /* jarak atas bawah */
+}
+
+/* header (judul kolom) */
+.cart-header{
+  font-weight: bold; /* teks tebal */
+  border-bottom: 1px solid #ddd; /* garis bawah */
+}
+
+/* item produk */
+.cart-item{
+  border-bottom: 1px solid #eee; /* garis pemisah antar produk */
+}
+
+/* gambar produk */
+.cart-item img{
+  width: 70px; /* ukuran lebar gambar */
+  border-radius: 10px; /* sudut gambar melengkung */
+}
+
+/* bagian produk (gambar + nama) */
+.product{
+  display: flex; /* supaya gambar & teks sejajar */
+  align-items: center; /* rata tengah vertikal */
+  gap: 10px; /* jarak antar elemen */
+}
+
+/* bagian quantity (+ -) */
+.qty{
+  display: flex; /* tombol dan angka sejajar */
+  align-items: center; /* rata tengah */
+  gap: 10px; /* jarak antar tombol */
+}
+
+/* tombol + - */
+.qty button{
+  padding: 5px 10px; /* jarak dalam tombol */
+  border: none; /* hilangkan garis tombol */
+  cursor: pointer; /* cursor jadi tangan saat hover */
+}
+
+/* tombol hapus */
+.remove{
+  cursor: pointer; /* cursor tangan */
+  color: red; /* warna merah (tanda hapus) */
+}
+
+/* ================= SUMMARY (total harga) ================= */
+
+.summary{
+  margin-top: 20px; /* jarak dari tabel */
+  background: white; /* background putih */
+  padding: 20px; /* jarak dalam */
+  border-radius: 12px; /* sudut melengkung */
+}
+
+/* tombol checkout */
+.checkout-btn{
+  width: 100%; /* lebar penuh */
+  padding: 15px; /* tinggi tombol */
+  background: red; /* warna tombol */
+  color: white; /* warna teks */
+  border: none; /* hilangkan border */
+  border-radius: 10px; /* sudut tombol */
+  font-size: 16px; /* ukuran teks */
+  cursor: pointer; /* cursor tangan */
+}
+
+/* ================= CHECKOUT PAGE ================= */
+
+/* ===== RESET DASAR ===== */
+*{
+margin:0; /* hapus jarak luar default semua elemen */
+padding:0; /* hapus jarak dalam default */
+box-sizing:border-box; /* biar ukuran width/height lebih stabil */
+font-family:'Urbanist',sans-serif; /* font utama */
+}
+
+/* ===== BODY ===== */
+body{
+background:linear-gradient(135deg,#fff7fa,#f5f5f5); /* gradasi background */
+height:100vh; /* tinggi full layar */
+overflow:hidden; /* sembunyikan scroll */
+color:#222; /* warna teks utama */
+}
+
+
+/* ================= PROGRESS STEP ================= */
+.progress{
+width:100%; /* lebar penuh */
+padding:12px 0; /* jarak atas bawah */
+display:flex; /* sejajar horizontal */
+justify-content:center; /* posisi ke tengah */
+gap:50px; /* jarak antar step */
+font-weight:600; /* teks agak tebal */
+font-size:14px; /* ukuran teks */
+}
+
+.step{
+position:relative; /* supaya garis bawah bisa diatur */
+color:#bbb; /* warna abu (belum aktif) */
+}
+
+.step.active{
+color:#000; /* warna hitam (aktif) */
+}
+
+.step.active:before{
+content:""; /* wajib untuk pseudo element */
+position:absolute; /* posisi relatif ke .step */
+bottom:-8px; /* posisi di bawah teks */
+left:0; /* mulai dari kiri */
+width:100%; /* lebar penuh */
+height:3px; /* tinggi garis */
+background:#f7b6c8; /* warna garis (pink) */
+border-radius:20px; /* biar halus */
+}
+
+
+/* ================= LAYOUT UTAMA ================= */
+.container{
+width:94%; /* lebar hampir full layar */
+height:calc(100vh - 60px); 
+/* tinggi = layar - 60px (biar muat progress bar) */
+
+margin:auto; /* center horizontal */
+display:grid; /* pakai grid layout */
+grid-template-columns:1.55fr 1fr; 
+/* kiri lebih besar (form), kanan lebih kecil (summary) */
+
+gap:20px; /* jarak antar kolom */
+padding-bottom:15px; /* jarak bawah */
+}
+
+
+/* ================= CARD (KOTAK) ================= */
+.card{
+background:rgba(255,255,255,.95); /* putih transparan */
+backdrop-filter:blur(10px); /* efek blur kaca */
+border-radius:24px; /* sudut melengkung */
+box-shadow:0 8px 30px rgba(0,0,0,.04); /* bayangan halus */
+padding:22px; /* jarak dalam */
+overflow:hidden; /* sembunyikan overflow */
+}
+
+
+/* ================= BAGIAN KIRI ================= */
+h2{
+font-size:24px; /* ukuran judul utama */
+margin-bottom:12px; /* jarak bawah */
+}
+
+.section-title{
+font-size:14px; /* ukuran kecil */
+font-weight:700; /* tebal */
+margin:10px 0 6px; /* jarak atas & bawah */
+}
+
+
+/* INPUT FORM */
+.input{
+width:100%; /* full lebar container */
+padding:10px; /* jarak dalam */
+border:1px solid #ececec; /* garis tipis */
+border-radius:14px; /* sudut melengkung */
+margin-bottom:8px; /* jarak bawah */
+font-size:12px; /* ukuran teks */
+background:#fafafa; /* background abu sangat muda */
+}
+
+.input:focus{
+outline:none; /* hilangkan garis biru default */
+border:1px solid #f7b6c8; /* border pink saat aktif */
+background:#fff; /* jadi putih */
+}
+
+/* textarea khusus */
+textarea.input{
+height:48px; /* tinggi textarea */
+resize:none; /* tidak bisa di resize */
+}
+
+/* 2 kolom input */
+.row{
+display:grid; /* grid layout */
+grid-template-columns:1fr 1fr; /* 2 kolom */
+gap:10px; /* jarak antar kolom */
+}
+
+
+/* ================= PAYMENT ================= */
+.pay-grid{
+display:grid; /* grid */
+grid-template-columns:1fr 1fr; /* 2 kolom */
+gap:8px; /* jarak */
+margin-top:5px; /* jarak dari atas */
+}
+
+.pay{
+border:1px solid #eee; /* border tipis */
+padding:10px; /* jarak dalam */
+border-radius:14px; /* sudut */
+display:flex; /* sejajar */
+align-items:center; /* tengah */
+gap:10px; /* jarak */
+cursor:pointer; /* cursor tangan */
+background:#fff; /* putih */
+font-size:12px; /* kecil */
+transition:.3s; /* animasi */
+}
+
+.pay:hover{
+border-color:#f7b6c8; /* jadi pink */
+transform:translateY(-2px); /* naik dikit */
+}
+
+.pay input{
+accent-color:#f7b6c8; /* warna radio button */
+}
+
+
+/* ================= BUTTON ================= */
+.btn-pay{
+margin-top:16px; /* jarak atas */
+width:100%; /* full lebar */
+padding:14px; /* tinggi tombol */
+border:none; /* tanpa border */
+border-radius:16px; /* sudut */
+background:linear-gradient(135deg,#000,#444); /* gradasi hitam */
+color:white; /* teks putih */
+font-size:15px; /* ukuran */
+font-weight:700; /* tebal */
+cursor:pointer; /* tangan */
+transition:.3s; /* animasi */
+}
+
+.btn-pay:hover{
+transform:translateY(-3px); /* naik saat hover */
+}
+
+
+/* ================= RIGHT (SUMMARY) ================= */
+.summary-title{
+font-size:22px; /* judul */
+font-weight:800; /* tebal banget */
+margin-bottom:15px; /* jarak bawah */
+}
+
+.item{
+display:flex; /* sejajar */
+gap:12px; /* jarak */
+margin-bottom:12px; /* jarak bawah */
+padding-bottom:12px; /* jarak bawah dalam */
+border-bottom:1px solid #eee; /* garis */
+}
+
+.item img{
+width:70px; /* lebar gambar */
+height:70px; /* tinggi */
+object-fit:cover; /* biar tidak gepeng */
+border-radius:14px; /* sudut */
+}
+
+.item h4{
+font-size:14px; /* ukuran */
+margin-bottom:4px; /* jarak */
+}
+
+.item p{
+font-size:12px; /* kecil */
+color:#777; /* abu */
+}
+
+.badge{
+display:inline-block; /* biar bisa diatur */
+margin-top:6px; /* jarak */
+background:#fff1f5; /* pink muda */
+color:#d86b95; /* pink tua */
+padding:5px 10px; /* jarak */
+border-radius:30px; /* bulat */
+font-size:11px; /* kecil */
+font-weight:600; /* tebal */
+}
+
+
+/* ================= DELIVERY ================= */
+.delivery{
+margin:12px 0; /* jarak */
+padding:12px; /* dalam */
+background:#fff7fa; /* pink muda */
+border-radius:14px; /* sudut */
+}
+
+.delivery h4{
+font-size:14px; /* ukuran */
+margin-bottom:5px; /* jarak */
+}
+
+.delivery p{
+font-size:12px; /* kecil */
+}
+
+
+/* ================= TOTAL ================= */
+.total-box{
+margin-top:14px; /* jarak atas */
+}
+
+.line{
+display:flex; /* sejajar */
+justify-content:space-between; /* kiri-kanan */
+margin:8px 0; /* jarak */
+font-size:14px; /* ukuran */
+}
+
+.grand{
+margin-top:12px; /* jarak */
+padding-top:12px; /* jarak dalam */
+border-top:1px solid #ddd; /* garis atas */
+font-size:20px; /* besar */
+font-weight:800; /* tebal */
+display:flex; /* sejajar */
+justify-content:space-between; /* kiri kanan */
+}
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:900px){
+
+body{
+overflow:auto; /* aktifkan scroll */
+}
+
+.container{
+height:auto; /* tinggi menyesuaikan */
+grid-template-columns:1fr; /* jadi 1 kolom */
+}
+
+.checkout-final{
+margin-top:18px; /* jarak */
+width:100%; /* full */
+}
+
+}
+
+/* ================= RECEIPT / STRUK PAGE ================= */
+
+/* ===== HTML ROOT ===== */
+html{ 
+  font-size:13px; /* ukuran dasar font (semua rem akan ikut ini) */
+}
+
+/* ===== RESET DASAR ===== */
+*{
+  margin:0; /* hapus jarak luar default */
+  padding:0; /* hapus jarak dalam default */
+  box-sizing:border-box; /* biar ukuran lebih stabil */
+  font-family:'Urbanist',sans-serif; /* font utama */
+}
+
+/* ===== BODY ===== */
+body{
+  height:100vh; /* tinggi full layar */
+  display:flex; /* supaya bisa center */
+  justify-content:center; /* center horizontal */
+  align-items:center; /* center vertikal */
+  overflow:hidden; /* hilangkan scroll */
+}
+
+
+/* ================= RECEIPT BOX ================= */
+.receipt{
+  width:100%; /* lebar penuh */
+  max-width:400px; /* maksimal 400px (biar kecil kayak struk) */
+  background:#fff; /* background putih */
+  border-radius:24px; /* sudut melengkung */
+  box-shadow:0 15px 40px rgba(0,0,0,.08); /* bayangan */
+  overflow:hidden; /* sembunyikan yang keluar */
+  transform:scale(0.9); /* kecilin dikit */
+  transform-origin:top center; /* titik pengecilan dari atas */
+}
+
+
+/* ================= HEADER ================= */
+.header{
+  padding:12px; /* jarak dalam */
+  text-align:center; /* teks tengah */
+  border-bottom:1px solid #eee; /* garis bawah */
+}
+
+/* logo brand */
+.brand-logo img{
+  width:100%; /* lebar penuh */
+  height:80px; /* tinggi tetap */
+  object-fit:cover; /* biar ga gepeng */
+  border-radius:12px; /* sudut */
+  margin-top:8px; /* jarak atas */
+}
+
+
+/* ================= STATUS ================= */
+.status{
+  margin:8px; /* jarak luar */
+  padding:6px; /* jarak dalam */
+  text-align:center; /* tengah */
+  background:#fff4f8; /* pink muda */
+  border-radius:10px; /* sudut */
+  font-size:10px; /* kecil */
+  font-weight:700; /* tebal */
+  color:#cc5d88; /* warna pink tua */
+}
+
+
+/* ================= INFO GRID ================= */
+.info{
+  padding:0 8px; /* jarak kiri kanan */
+  display:grid; /* pakai grid */
+  grid-template-columns:1fr 1fr; /* 2 kolom */
+  gap:6px; /* jarak antar kotak */
+}
+
+.info div{
+  background:#fafafa; /* abu muda */
+  padding:6px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+  font-size:9px; /* kecil */
+}
+
+
+/* ================= ADDRESS ================= */
+.address-box{
+  margin:8px; /* jarak luar */
+  padding:6px; /* jarak dalam */
+  background:#fafafa; /* abu muda */
+  border-radius:8px; /* sudut */
+  font-size:9px; /* kecil */
+}
+
+
+/* ================= ITEMS ================= */
+.items{
+  margin:8px; /* jarak */
+  background:#fafafa; /* background */
+  padding:6px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+}
+
+.item{
+  display:flex; /* sejajar kiri kanan */
+  justify-content:space-between; /* kiri kanan */
+  font-size:10px; /* kecil */
+  padding:4px 0; /* jarak atas bawah */
+  border-bottom:1px dashed #ddd; /* garis putus-putus */
+}
+
+
+/* ================= SUMMARY ================= */
+.summary{
+  margin:8px; /* jarak */
+  padding:6px; /* jarak dalam */
+  border:1px solid #eee; /* border */
+  border-radius:8px; /* sudut */
+}
+
+.line{
+  display:flex; /* sejajar */
+  justify-content:space-between; /* kiri kanan */
+  font-size:10px; /* kecil */
+  margin:4px 0; /* jarak */
+}
+
+.grand{
+  font-weight:800; /* tebal banget */
+  font-size:12px; /* lebih besar */
+  border-top:1px dashed #ccc; /* garis atas */
+  padding-top:4px; /* jarak atas */
+}
+
+
+/* ================= PAYMENT ================= */
+.payment{
+  margin:8px; /* jarak */
+  background:#fff7fa; /* pink muda */
+  padding:10px; /* jarak dalam */
+  border-radius:8px; /* sudut */
+  text-align:center; /* tengah */
+  font-size:11px; /* ukuran */
+}
+
+
+/* ================= FOOTER ================= */
+.footer{
+  text-align:center; /* tengah */
+  font-size:9px; /* kecil */
+  padding:6px; /* jarak */
+  border-top:1px dashed #ddd; /* garis atas */
+}
+
+
+/* ================= BUTTONS ================= */
+.buttons{
+  display:flex; /* sejajar */
+  gap:8px; /* jarak antar tombol */
+  padding:10px; /* jarak dalam */
+  border-top:1px dashed #ddd; /* garis atas */
+  background:#fff; /* putih */
+}
+
+button{
+  flex:1; /* semua tombol sama lebar */
+  padding:10px; /* tinggi tombol */
+  border:none; /* tanpa border */
+  border-radius:10px; /* sudut */
+  font-weight:700; /* tebal */
+  cursor:pointer; /* tangan */
+}
+
+/* tombol print */
+.print{ 
+  background:#111; /* hitam */
+  color:#fff; /* teks putih */
+}
+
+/* tombol download */
+.download{ 
+  background:#f7b6c8; /* pink */
+}
